@@ -1,0 +1,6 @@
+<h1><%= @map.name %></h1>
+
+<%= render :partial => "map_fragment", :locals => {:map => @map} %>
+
+<div><%= render :partial => "form", :locals => {:map => @map} %></div>
+<br/>

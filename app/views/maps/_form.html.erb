@@ -1,0 +1,21 @@
+<%= form_for [map] do |f| %>
+
+
+
+<h4> Troll Data </h4>
+  <ul>
+    <% map.trolls.each do |troll| %>
+    <li>Line Number:<%= troll.line %> Data: <%= troll.data %></li>
+    <% end %>
+  </ul>
+
+<h4> Points </h4>
+<ul>
+  <% map.points.each do |point| %>
+  <li>Point: Lat:<%= point.lat %> Long: <%= point.long %></li>
+  <% end %>
+</ul>
+
+
+<hr/>
+<% end %>

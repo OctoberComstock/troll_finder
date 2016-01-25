@@ -1,0 +1,21 @@
+<h1>Maps</h1>
+
+<div><%= render :partial => "upload_form", :locals => {:map => @map || Map.new} %></div>
+
+
+<div class="row">
+  <div class="col-md-8">
+    <% @maps.each do |map| %>
+      <div class="media">
+        <div class="media-body">
+          <h4 class="media-heading">
+            <%= link_to map.name, map %>
+          </h4>
+          <small>
+            <%= map.description %>
+          </small>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
