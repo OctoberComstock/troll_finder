@@ -8,9 +8,9 @@
     <% @maps.each do |map| %>
       <div class="media">
         <div class="media-body">
-          <h4 class="media-heading">
+          <h4><span class="label label-default">
             <%= link_to map.name, map %>
-          </h4>
+          </span></h4>
           <small>
             <%= map.description %>
           </small>

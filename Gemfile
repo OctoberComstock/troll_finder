@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 # For AWS Elastic Beanstalk
 gem 'puma'
 
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'rails', '4.2.5'
 gem 'sqlite3'
 gem 'sass-rails', '~> 5.0'
