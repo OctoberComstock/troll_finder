@@ -2,7 +2,7 @@
 
 <%= form_for @map do |f| %>
   <div class="form-group">
-    <h4><%= f.label :point_collection %></h4>
+    <%= f.label :point_collection %>
     <%= f.file_field :point_collection %>
     <%= f.text_field :name %>
     <%= f.text_field :description %>

@@ -1,5 +1,5 @@
 <%= form_for [map] do |f| %>
-  <div class="upload-form">
+  <div class="form-group">
   <h4><%= f.label :point_collection %></h4>
 
   </br>
@@ -8,7 +8,8 @@
   </br>
     <%= f.text_field :name %>
   </div>
-  <div class="upload-form">
+
+  <div class="form-group">
     <%= f.submit "Upload", class: 'btn btn-success' %>
   </div>
 <% end %>
