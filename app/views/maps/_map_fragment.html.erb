@@ -3,75 +3,37 @@
 <div id="map" style="height: 400px;"></div>
     <script>
 
-var points = <%= raw @map.points.to_json %>;
+    var points = <%= raw @map.points.to_json %>;
 
-// This example adds a marker to indicate the position of Bondi Beach in Sydney,
-// Australia.
-function initMap() {
-  var bounds = new google.maps.LatLngBounds();
+    // This example adds a marker to indicate the position of Bondi Beach in Sydney,
+    // Australia.
+    function initMap() {
+      var bounds = new google.maps.LatLngBounds();
 
-  var map = new google.maps.Map(document.getElementById('map'));
-
-
+      var map = new google.maps.Map(document.getElementById('map'));
 
 
+      var image = '/icons/trollface.png';
 
-  var image = '/icons/trollface.png';
-  // var beachMarker = new google.maps.Marker({
-  //   position: {lat: -33.890, lng: 151.274},
-  //   map: map,
-  //   icon: image
-  // });
-  //
-  // var m1 = new google.maps.Marker({
-  //   position: {lat: -33.894, lng: 200.274},
-  //   map: map,
-  //   icon: image
-  // });
-  //
-  // var m2 = new google.maps.Marker({
-  //   position: {lat: -33.894, lng: 33.980},
-  //   map: map,
-  //   icon: image
-  // });
-  //
-  // var m3 = new google.maps.Marker({
-  //   position: {lat: -118.41755836532509, lng: 34.08710183871558},
-  //   map: map,
-  //   icon: image
-  // });
-  //
-  // var m2 = new google.maps.Marker({
-  //   position: {lat: -118.63660035863207, lng: 33.940677671481964},
-  //   map: map,
-  //   icon: image
-  // });
-  //
-  // var m2 = new google.maps.Marker({
-  //   position: {lat: -118.35129206057674, lng: 34.17364562670385},
-  //   map: map,
-  //   icon: image
-  // });
+      var marker, loc;
+      points.forEach(function (point){
+        loc = new google.maps.LatLng(point.lat, point.long);
+        bounds.extend(loc);
+        marker = new google.maps.Marker({
+          //position: {lat: point.lat, lng: point.long},
+          position: loc,
+          map: map,
+          icon: image
+        });
+      });
 
-  var marker, loc;
-  points.forEach(function (point){
-    loc = new google.maps.LatLng(point.lat, point.long);
-    bounds.extend(loc);
-    marker = new google.maps.Marker({
-      //position: {lat: point.lat, lng: point.long},
-      position: loc,
-      map: map,
-      icon: image
-    });
-  });
+      map.fitBounds(bounds);
+      map.panToBounds(bounds);
 
-  map.fitBounds(bounds);
-  map.panToBounds(bounds);
-
-  points.forEach(function (point) {
-    console.log({lat: point.lat, lng: point.long})
-  })
-}
+      points.forEach(function (point) {
+        console.log({lat: point.lat, lng: point.long})
+      })
+    }
     </script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=<%= google_key %>&signed_in=true&callback=initMap"></script>
